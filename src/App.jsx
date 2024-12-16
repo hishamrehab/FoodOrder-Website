@@ -15,8 +15,6 @@ function App() {
         <Checkout />
       </CartContextProvider>
     </UserProgressContextProvider>
-
-
   );
 }
 
