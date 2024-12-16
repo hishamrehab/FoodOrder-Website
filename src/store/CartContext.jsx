@@ -24,14 +24,16 @@ function cartReducer(state, action) {
     } else {
       updatedItems.push({ ...action.item, quantity: 1 });
     }
-
     return { ...state, items: updatedItems };
   }
+
+
 
   if (action.type === 'REMOVE_ITEM') {
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.id
     );
+
     const existingCartItem = state.items[existingCartItemIndex];
 
     const updatedItems = [...state.items];
@@ -45,7 +47,6 @@ function cartReducer(state, action) {
       };
       updatedItems[existingCartItemIndex] = updatedItem;
     }
-
     return { ...state, items: updatedItems };
   }
 
@@ -70,9 +71,12 @@ export function CartContextProvider({ children }) {
   };
 
   console.log(cartContext);
+
   return (
-    <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
+    <CartContext.Provider value={cartContext}>
+      {children}
+    </CartContext.Provider>
   );
 }
 
-export default CartContext;
+export default CartContext; 
